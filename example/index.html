@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Credit Card Reader Example</title>
+  <meta name="description" content="">
+
+  <script src="../lib/prototype.js"></script>
+  <script src="../lib/inflections.js"></script>
+  <script src="../credit_card_reader.js"></script>
+</head>
+<body>
+  <h1>Credit Card Reader Example</h1>
+  <div id="results">
+
+  </div>
+
+  <script>
+    // Create a new reader instance
+    var reader = new CreditCardReader();
+
+    // Feed it an object to observe (this could also be a textbox)
+    reader.observe(document.body);
+
+    // Errback in case of a reading error
+    reader.cardError(function () {
+    	// card swipe error
+      $('results').update("error encountered");
+    });
+
+    reader.cardRead(function (data) {
+    	// data object: {number:number,name:name,exp_date:{year:exp_year,month:exp_month}}
+      $('results').update("Name: "+data.name.titleize()+"<br>Number: "+data.number+"<br>Exp Date: "+data.exp_date.month+"/"+data.exp_date.year);
+      console.log(data);
+    });
+
+    $('results').focus();
+  </script>
+</body>
+</html>
