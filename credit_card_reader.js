@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2012 Stephen Heuer
+Copyright (c) 2013 Stephen Heuer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
